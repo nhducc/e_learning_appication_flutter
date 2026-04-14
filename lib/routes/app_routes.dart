@@ -61,7 +61,13 @@ class AppRoutes {
       case teacherHome:
         return MaterialPageRoute(builder: (_) => const TeacherHomeScreen());
       case courseList:
-        return MaterialPageRoute(builder: (_) => const CourseListScreen());
+        final args = setting.arguments as Map<String, dynamic>?;
+        return MaterialPageRoute(
+          builder: (_) => CourseListScreen(
+            categoryId: args?['category'] as String?,
+            categoryName: args?['categoryName'] as String?,
+          ),
+        );
       case quizList:
         return MaterialPageRoute(builder: (_) => const QuizListScreen());
       case profile:
