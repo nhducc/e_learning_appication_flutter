@@ -1,0 +1,76 @@
+import 'package:e_learning_application_clone/main_screen.dart';
+import 'package:e_learning_application_clone/views/auth/forgot_password_screen.dart';
+import 'package:e_learning_application_clone/views/auth/login_screen.dart';
+import 'package:e_learning_application_clone/views/auth/register_screen.dart';
+import 'package:e_learning_application_clone/views/course/course_list/course_list_screen.dart';
+import 'package:e_learning_application_clone/views/home/home_screen.dart';
+import 'package:e_learning_application_clone/views/onboarding/onboarding_screen.dart';
+import 'package:e_learning_application_clone/views/profile/proflie_screen.dart';
+import 'package:e_learning_application_clone/views/quiz/quiz_list/quiz_list_screen.dart';
+import 'package:e_learning_application_clone/views/splash/splash_screen.dart';
+import 'package:e_learning_application_clone/views/teacher/teacher_home_screen.dart';
+import 'package:flutter/material.dart';
+
+class AppRoutes {
+  //main
+  static const String main = '/main';
+
+  //auth routes
+  static const String splash = '/splash';
+  static const String onboarding = '/onboarding';
+  static const String login = '/login';
+  static const String register = '/register';
+  static const String forgotPassword = '/forgot-password';
+  static const String home = '/home';
+
+  //course routes
+  static const String courseList = '/courses';
+
+  //quiz routes
+  static const String quizList = '/quizzes';
+
+  //profile routes
+  static const String profile = '/profile';
+
+  //teacher
+  static const String teacherHome = '/teacher/home';
+
+  static Route<dynamic> onGenerateRoute(RouteSettings setting) {
+    switch (setting.name) {
+      case splash:
+        return MaterialPageRoute(builder: (_) => const SplashScreen());
+      case onboarding:
+        return MaterialPageRoute(builder: (_) => const OnboardingScreen());
+      case login:
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
+      case register:
+        return MaterialPageRoute(builder: (_) => const RegisterScreen());
+      case forgotPassword:
+        return MaterialPageRoute(builder: (_) => const ForgotPasswordScreen());
+      case main:
+        return MaterialPageRoute(
+          builder: (_) => MainScreen(
+            initialIndex: setting.arguments is Map
+                ? (setting.arguments as Map<String, dynamic>)['initialIndex']
+                      as int?
+                : null,
+          ),
+        );
+      case home:
+        return MaterialPageRoute(builder: (_) => HomeScreen());
+      case teacherHome:
+        return MaterialPageRoute(builder: (_) => const TeacherHomeScreen());
+      case courseList:
+        return MaterialPageRoute(builder: (_) => const CourseListScreen());
+      case quizList:
+        return MaterialPageRoute(builder: (_) => const QuizListScreen());
+      case profile:
+        return MaterialPageRoute(builder: (_) => const ProflieScreen());
+      default:
+        return MaterialPageRoute(
+          builder: (_) =>
+              const Scaffold(body: Center(child: Text('Route not  found'))),
+        );
+    }
+  }
+}
