@@ -2,6 +2,7 @@ import 'package:e_learning_application_clone/main_screen.dart';
 import 'package:e_learning_application_clone/views/auth/forgot_password_screen.dart';
 import 'package:e_learning_application_clone/views/auth/login_screen.dart';
 import 'package:e_learning_application_clone/views/auth/register_screen.dart';
+import 'package:e_learning_application_clone/views/course/course_detail/course_detail_screen.dart';
 import 'package:e_learning_application_clone/views/course/course_list/course_list_screen.dart';
 import 'package:e_learning_application_clone/views/home/home_screen.dart';
 import 'package:e_learning_application_clone/views/onboarding/onboarding_screen.dart';
@@ -25,6 +26,7 @@ class AppRoutes {
 
   //course routes
   static const String courseList = '/courses';
+  static const String courseDetail = '/courses/:id';
 
   //quiz routes
   static const String quizList = '/quizzes';
@@ -67,6 +69,17 @@ class AppRoutes {
             categoryId: args?['category'] as String?,
             categoryName: args?['categoryName'] as String?,
           ),
+        );
+      case courseDetail:
+        String courseId;
+        if (setting.arguments != null) {
+          courseId = setting.arguments as String;
+        } else {
+          final uri = Uri.parse(setting.name ?? '');
+          courseId = uri.pathSegments.last;
+        }
+        return MaterialPageRoute(
+          builder: (_) => CourseDetailScreen(courseId: courseId),
         );
       case quizList:
         return MaterialPageRoute(builder: (_) => const QuizListScreen());
