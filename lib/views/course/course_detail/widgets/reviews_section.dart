@@ -1,5 +1,8 @@
 import 'package:e_learning_application_clone/core/theme/app_colors.dart';
+import 'package:e_learning_application_clone/views/course/course_detail/widgets/review_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 
 class ReviewsSection extends StatelessWidget {
   final String courseId;
@@ -22,7 +25,19 @@ class ReviewsSection extends StatelessWidget {
               ),
             ),
             TextButton.icon(
-              onPressed: () async {},
+              onPressed: () async {
+                final result = await Get.dialog<Map<String, dynamic>>(
+                  ReviewDialog(courseId: courseId),
+                );
+                if (result != null) {
+                  Get.snackbar(
+                    'Success',
+                    'Thank you for your review!',
+                    backgroundColor: AppColors.primary,
+                    colorText: Colors.white,
+                  );
+                }
+              },
               label: const Text('Write a Review'),
               icon: const Icon(Icons.rate_review),
             ),

@@ -1,4 +1,7 @@
+import 'package:e_learning_application_clone/core/theme/app_colors.dart';
+import 'package:e_learning_application_clone/routes/app_routes.dart';
 import 'package:e_learning_application_clone/services/dummy_data_service.dart';
+import 'package:e_learning_application_clone/views/course/course_detail/widgets/action_buttons.dart';
 import 'package:e_learning_application_clone/views/course/course_detail/widgets/course_detail_app_bar.dart';
 import 'package:e_learning_application_clone/views/course/course_detail/widgets/course_info_card.dart';
 import 'package:e_learning_application_clone/views/course/course_detail/widgets/lessons_list.dart';
@@ -87,12 +90,46 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
                   const SizedBox(height: 24),
                   ReviewsSection(courseId: widget.courseId),
                   const SizedBox(height: 16),
+                  ActionButtons(course: course),
                 ],
               ),
             ),
           ),
         ],
       ),
+      bottomNavigationBar: course.isPremium && !isUnlocked
+          ? Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: theme.scaffoldBackgroundColor,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 10,
+                    offset: const Offset(0, -5),
+                  ),
+                ],
+              ),
+              child: ElevatedButton(
+                onPressed: () {
+                  //payment screen
+                  Get.toNamed(
+                    AppRoutes.payment,
+                    arguments: {
+                      'courseId': widget.courseId,
+                      'courseName': course.title,
+                      'price': course.price,
+                    },
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.primary,
+                  padding: const EdgeInsets.all(16),
+                ),
+                child: Text('Buy Now for \$${course.price}'),
+              ),
+            )
+          : null,
     );
   }
 }
