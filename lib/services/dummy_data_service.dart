@@ -288,8 +288,7 @@ class DummyDataService {
         title: 'Introduction to Flutter',
         description:
             'This is a detailed description for Introduction to Flutter',
-        videoUrl:
-            'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+        videoUrl: 'https://www.w3schools.com/html/mov_bbb.mp4',
         duration: 30,
         resources: _createDummyResources(),
         isPreview: true,
@@ -383,8 +382,7 @@ class DummyDataService {
       id: 'lesson_$id',
       title: title,
       description: 'This is a detailed description for $title',
-      videoUrl:
-          'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+      videoUrl: 'https://www.w3schools.com/html/mov_bbb.mp4',
       duration: 30,
       resources: _createDummyResources(),
       isPreview: isPreview,

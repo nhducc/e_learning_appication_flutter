@@ -5,6 +5,7 @@ import 'package:e_learning_application_clone/views/auth/login_screen.dart';
 import 'package:e_learning_application_clone/views/auth/register_screen.dart';
 import 'package:e_learning_application_clone/views/course/course_detail/course_detail_screen.dart';
 import 'package:e_learning_application_clone/views/course/course_list/course_list_screen.dart';
+import 'package:e_learning_application_clone/views/course/lesson_screen/lesson_screen.dart';
 import 'package:e_learning_application_clone/views/course/payment/payment_screen.dart';
 import 'package:e_learning_application_clone/views/home/home_screen.dart';
 import 'package:e_learning_application_clone/views/onboarding/onboarding_screen.dart';
@@ -50,6 +51,10 @@ class AppPages {
         courseName: Get.arguments['courseName'] as String,
         price: Get.arguments['price'] as double,
       ),
+    ),
+    GetPage(
+      name: AppRoutes.lesson,
+      page: () => LessonScreen(lessonId: Get.parameters['id'] ?? ''),
     ),
 
     GetPage(name: AppRoutes.quizList, page: () => const QuizListScreen()),

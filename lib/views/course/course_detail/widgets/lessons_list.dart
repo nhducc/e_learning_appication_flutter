@@ -1,4 +1,5 @@
 import 'package:e_learning_application_clone/core/theme/app_colors.dart';
+import 'package:e_learning_application_clone/routes/app_routes.dart';
 import 'package:e_learning_application_clone/services/dummy_data_service.dart';
 import 'package:e_learning_application_clone/views/course/course_detail/widgets/lesson_tile.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +57,15 @@ class LessonsList extends StatelessWidget {
                 colorText: Colors.white,
                 duration: const Duration(seconds: 3),
               );
-            } else {}
+            } else {
+              final result = await Get.toNamed(
+                AppRoutes.lesson.replaceAll(':id', lesson.id),
+                parameters: {'courseId': courseId},
+              );
+              if (result == true) {
+                onLessonComplete?.call();
+              }
+            }
           },
         );
       },
