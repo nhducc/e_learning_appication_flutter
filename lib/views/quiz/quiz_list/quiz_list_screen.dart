@@ -2,6 +2,7 @@ import 'package:e_learning_application_clone/core/theme/app_colors.dart';
 import 'package:e_learning_application_clone/services/dummy_data_service.dart';
 import 'package:e_learning_application_clone/views/quiz/quiz_list/widgets/quiz_card.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class QuizListScreen extends StatelessWidget {
   const QuizListScreen({super.key});
@@ -48,7 +49,10 @@ class QuizListScreen extends StatelessWidget {
                   description: quiz.description,
                   questionCount: quiz.questions.length,
                   timeLimit: quiz.timeLimit,
-                  onTap: () {},
+                  onTap: () => Get.toNamed(
+                    '/quiz/${quiz.id}',
+                    parameters: {'id': quiz.id},
+                  ),
                 );
               }, childCount: DummyDataService.quizzes.length),
             ),
