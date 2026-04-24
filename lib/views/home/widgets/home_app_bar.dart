@@ -1,5 +1,8 @@
 import 'package:e_learning_application_clone/core/theme/app_colors.dart';
+import 'package:e_learning_application_clone/routes/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});
@@ -14,7 +17,7 @@ class HomeAppBar extends StatelessWidget {
       backgroundColor: AppColors.primary,
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () => Get.toNamed(AppRoutes.analytics),
           icon: const Icon(Icons.analytics, color: Colors.white),
         ),
       ],

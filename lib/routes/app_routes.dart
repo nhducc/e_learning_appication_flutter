@@ -2,11 +2,13 @@ import 'package:e_learning_application_clone/main_screen.dart';
 import 'package:e_learning_application_clone/views/auth/forgot_password_screen.dart';
 import 'package:e_learning_application_clone/views/auth/login_screen.dart';
 import 'package:e_learning_application_clone/views/auth/register_screen.dart';
+import 'package:e_learning_application_clone/views/course/analytics_dashboard/analytics_dashboard_screen.dart';
 import 'package:e_learning_application_clone/views/course/course_detail/course_detail_screen.dart';
 import 'package:e_learning_application_clone/views/course/course_list/course_list_screen.dart';
 import 'package:e_learning_application_clone/views/course/lesson_screen/lesson_screen.dart';
 import 'package:e_learning_application_clone/views/course/payment/payment_screen.dart';
 import 'package:e_learning_application_clone/views/home/home_screen.dart';
+import 'package:e_learning_application_clone/views/notifications/notifications_screen.dart';
 import 'package:e_learning_application_clone/views/onboarding/onboarding_screen.dart';
 import 'package:e_learning_application_clone/views/profile/proflie_screen.dart';
 import 'package:e_learning_application_clone/views/quiz/quiz_attempt/quiz_attempt_screen.dart';
@@ -31,15 +33,18 @@ class AppRoutes {
   static const String courseList = '/courses';
   static const String courseDetail = '/course/:id';
   static const String payment = '/payment';
+  static const String analytics = '/analytics';
 
   static const String lesson = '/lesson/:id';
 
   //quiz routes
   static const String quizList = '/quizzes';
   static const String quizAttempt = '/quiz/:id';
+  static const String quizResult = '/quiz/result';
 
   //profile routes
   static const String profile = '/profile';
+  static const String notifications = '/notifications';
 
   //teacher
   static const String teacherHome = '/teacher/home';
@@ -99,6 +104,12 @@ class AppRoutes {
 
       case profile:
         return MaterialPageRoute(builder: (_) => const ProflieScreen());
+
+      case notifications:
+        return MaterialPageRoute(builder: (_) => const NotificationsScreen());
+
+      case analytics:
+        return MaterialPageRoute(builder: (_) => AnalyticsDashboardScreen());
 
       case lesson:
         final lessonId = setting.arguments as String?;

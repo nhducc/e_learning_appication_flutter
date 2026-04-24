@@ -1,17 +1,22 @@
 import 'package:e_learning_application_clone/main_screen.dart';
+import 'package:e_learning_application_clone/models/quiz.dart';
+import 'package:e_learning_application_clone/models/quiz_attempt.dart';
 import 'package:e_learning_application_clone/routes/app_routes.dart';
 import 'package:e_learning_application_clone/views/auth/forgot_password_screen.dart';
 import 'package:e_learning_application_clone/views/auth/login_screen.dart';
 import 'package:e_learning_application_clone/views/auth/register_screen.dart';
+import 'package:e_learning_application_clone/views/course/analytics_dashboard/analytics_dashboard_screen.dart';
 import 'package:e_learning_application_clone/views/course/course_detail/course_detail_screen.dart';
 import 'package:e_learning_application_clone/views/course/course_list/course_list_screen.dart';
 import 'package:e_learning_application_clone/views/course/lesson_screen/lesson_screen.dart';
 import 'package:e_learning_application_clone/views/course/payment/payment_screen.dart';
 import 'package:e_learning_application_clone/views/home/home_screen.dart';
+import 'package:e_learning_application_clone/views/notifications/notifications_screen.dart';
 import 'package:e_learning_application_clone/views/onboarding/onboarding_screen.dart';
 import 'package:e_learning_application_clone/views/profile/proflie_screen.dart';
 import 'package:e_learning_application_clone/views/quiz/quiz_attempt/quiz_attempt_screen.dart';
 import 'package:e_learning_application_clone/views/quiz/quiz_list/quiz_list_screen.dart';
+import 'package:e_learning_application_clone/views/quiz/quiz_result/quiz_result_screen.dart';
 import 'package:e_learning_application_clone/views/splash/splash_screen.dart';
 import 'package:e_learning_application_clone/views/teacher/teacher_home_screen.dart';
 import 'package:get/get.dart';
@@ -64,7 +69,21 @@ class AppPages {
       page: () => QuizAttemptScreen(quizId: Get.parameters['id'] ?? ''),
     ),
 
+    GetPage(
+      name: '/quiz/result',
+      page: () => QuizResultScreen(
+        attempt: Get.arguments['attempt'] as QuizAttempt,
+        quiz: Get.arguments['quiz'] as Quiz,
+      ),
+    ),
+
     GetPage(name: AppRoutes.profile, page: () => const ProflieScreen()),
+    GetPage(
+      name: AppRoutes.notifications,
+      page: () => const NotificationsScreen(),
+    ),
+
+    GetPage(name: AppRoutes.analytics, page: () => AnalyticsDashboardScreen()),
 
     GetPage(name: AppRoutes.home, page: () => HomeScreen()),
     GetPage(name: AppRoutes.teacherHome, page: () => const TeacherHomeScreen()),
