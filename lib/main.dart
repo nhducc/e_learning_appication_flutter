@@ -1,6 +1,7 @@
 import 'package:e_learning_application_clone/bloc/auth/auth_bloc.dart';
 import 'package:e_learning_application_clone/bloc/font/font_bloc.dart';
 import 'package:e_learning_application_clone/bloc/font/font_state.dart';
+import 'package:e_learning_application_clone/config/firebase_config.dart';
 import 'package:e_learning_application_clone/services/storage_service.dart';
 import 'package:e_learning_application_clone/core/theme/app_theme.dart';
 import 'package:e_learning_application_clone/routes/app_routes.dart';
@@ -8,9 +9,13 @@ import 'package:e_learning_application_clone/routes/route_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get_storage/get_storage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await FirebaseConfig.init();
+  await GetStorage.init();
+
   await StorageService.init();
   runApp(const MyApp());
 }

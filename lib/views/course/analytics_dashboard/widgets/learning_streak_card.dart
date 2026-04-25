@@ -31,7 +31,7 @@ class LearningStreakCard extends StatelessWidget {
                     FittedBox(
                       fit: BoxFit.scaleDown,
                       child: Text(
-                        '${learningStreak['current']} Day Streak! ',
+                        '${learningStreak['current']} Day Streak! 🔥',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 24,

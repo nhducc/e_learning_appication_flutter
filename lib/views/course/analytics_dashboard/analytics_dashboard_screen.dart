@@ -2,6 +2,8 @@ import 'package:e_learning_application_clone/core/theme/app_colors.dart';
 import 'package:e_learning_application_clone/models/analytics_data.dart';
 import 'package:e_learning_application_clone/services/analytics_service.dart';
 import 'package:e_learning_application_clone/views/course/analytics_dashboard/widgets/learning_streak_card.dart';
+import 'package:e_learning_application_clone/views/course/analytics_dashboard/widgets/recommendations_card.dart';
+import 'package:e_learning_application_clone/views/course/analytics_dashboard/widgets/skills_progress_card.dart';
 import 'package:e_learning_application_clone/views/course/analytics_dashboard/widgets/weekly_progress_card.dart';
 import 'package:flutter/material.dart';
 
@@ -42,6 +44,12 @@ class AnalyticsDashboardScreen extends StatelessWidget {
                   LearningStreakCard(learningStreak: analytics.learningStreak),
                   const SizedBox(height: 20),
                   WeeklyProgressCard(weeklyProgress: analytics.weeklyProgress),
+                  const SizedBox(height: 20),
+                  SkillsProgressCard(skillProgess: analytics.skillProgress),
+                  const SizedBox(height: 20),
+                  RecommendationsCard(
+                    recommendations: analytics.recommendations,
+                  ),
                 ],
               ),
             ),
